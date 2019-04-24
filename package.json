@@ -109,6 +109,11 @@
       "git add"
     ]
   },
+  "prettier": {
+    "singleQuote": false,
+    "printWidth": 80,
+    "trailingComma": "none"
+  },
   "npmName": "react-slick",
   "npmFileMap": [
     {

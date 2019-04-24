@@ -261,6 +261,9 @@ export const changeSlide = (spec, options) => {
       previousInt = currentSlide - slideOffset;
       targetSlide = previousInt === -1 ? slideCount - 1 : previousInt;
     }
+    if (targetSlide > currentSlide) {
+      targetSlide = 0;
+    }
   } else if (options.message === "next") {
     slideOffset = indexOffset === 0 ? slidesToScroll : indexOffset;
     targetSlide = currentSlide + slideOffset;
@@ -294,7 +297,9 @@ export const changeSlide = (spec, options) => {
       return null;
     }
   }
-  return targetSlide;
+  return infinite
+    ? targetSlide
+    : Math.min(targetSlide, slideCount - slidesToShow);
 };
 export const keyHandler = (e, accessibility, rtl) => {
   if (e.target.tagName.match("TEXTAREA|INPUT|SELECT") || !accessibility)
