@@ -705,16 +705,8 @@ export const getTrackLeft = spec => {
     if (centerMode) {
       slidesToOffset += parseInt(slidesToShow / 2);
     }
-  } else {
-    if (
-      slideCount % slidesToScroll !== 0 &&
-      slideIndex + slidesToScroll > slideCount
-    ) {
-      slidesToOffset = slidesToShow - (slideCount % slidesToScroll);
-    }
-    if (centerMode) {
-      slidesToOffset = parseInt(slidesToShow / 2);
-    }
+  } else if (centerMode) {
+    slidesToOffset = parseInt(slidesToShow / 2);
   }
   slideOffset = slidesToOffset * slideWidth;
   verticalOffset = slidesToOffset * slideHeight;
